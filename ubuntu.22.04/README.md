@@ -8,35 +8,36 @@
 
 ## Tags
 
-- `4.0.0-ubuntu.18.04`
-- `4.0-ubuntu.18.04`
-- `4-ubuntu.18.04`
-- `ubuntu.18.04`
+- `5.0.0-ubuntu.22.04`
+- `5.0-ubuntu.22.04`
+- `5-ubuntu.22.04`
+- `ubuntu.22.04`
 
 ## Digest
 `sha256:5f436f9068be4033309636340b6c9d45998617d89ff47eef00b20b0731645d9b`
 
 ## Base Image
-`ubuntu:18.04`
+`ubuntu:22.04`
 
 ## Installed Software
 * Aws CLI 2.0.60
 * Aws Iam Authenticator 0.5.3
 * Aws Powershell 4.1.2
-* Azure CLI 2.14.0\*
+* Azure CLI 2.44.1-1~bionic
 * Azure Powershell 4.5.0
-* Dotnet Sdk 6.0
+* Dotnet Sdk 3.1.401-1
 * Ecs CLI 1.20.0
 * Eks CTL 0.25.0
-* Google Cloud CLI 339.0.0-0
-* Helm v3.10.2
-* Java Jdk 11.0.13+8-0ubuntu1~18.04
-* Kubectl 1.25.4-00
-* Octopus CLI 9.0.0
-* Octopus Client 14.2.303
-* Powershell 7.0.6\*
-* Terraform 1.3.4
-* Umoci 0.4.7
+* Google Cloud CLI 412.0.0-0
+* Google Cloud GKE auth plugin 412.0.0-0
+* Helm v3.7.1
+* Java Jdk 11.0.17+8-1ubuntu2~22.04
+* Kubectl 1.18.8-00
+* Octopus CLI 9.1.7
+* Octopus Client 8.8.3
+* Powershell 7.2.7-1.deb
+* Terraform 1.1.3
+* Umoci 0.4.6
 * wget - Latest
 * unzip - Latest
 * apt-utils - Latest

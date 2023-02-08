@@ -6,17 +6,17 @@ SHELL ["powershell", "-Command"]
 ARG Aws_Cli_Version=2.0.60
 ARG Aws_Iam_Authenticator_Version=0.5.3
 ARG Aws_Powershell_Version=4.1.2
-ARG Azure_Cli_Version=2.14.0
+ARG Azure_Cli_Version=2.44.0
 ARG Azure_Powershell_Version=4.5.0
 ARG Eks_Cli_Version=0.25.0
-ARG Google_Cloud_Cli_Version=339.0.0
+ARG Google_Cloud_Cli_Version=412.0.0
 ARG Helm_Version=3.7.1
 ARG Java_Jdk_Version=14.0.2
 ARG Kubectl_Version=1.18.8
 ARG Node_Version=14.17.2
-ARG Octopus_Cli_Version=7.4.1
+ARG Octopus_Cli_Version=9.1.7
 ARG Octopus_Client_Version=8.8.3
-ARG Powershell_Version=7.0.6
+ARG Powershell_Version=7.2.7
 ARG Python_Version=3.8.5
 ARG ScriptCs_Version=0.17.1
 ARG Terraform_Version=1.1.3
@@ -28,7 +28,7 @@ RUN $ProgressPreference = 'SilentlyContinue'; `
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; `
     iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
-# Install dotnet 3.1+
+# Install dotnet 6.0+
 RUN Invoke-WebRequest 'https://dot.net/v1/dotnet-install.ps1' -outFile 'dotnet-install.ps1'; `
     [Environment]::SetEnvironmentVariable('DOTNET_CLI_TELEMETRY_OPTOUT', '1', 'Machine'); `
     .\dotnet-install.ps1 -Channel '6.0'; `
@@ -101,3 +101,7 @@ RUN choco install powershell-core --yes --version $Env:Powershell_Version --no-p
 # # Update path for new tools
 ADD .\scripts\update_path.cmd C:\update_path.cmd
 RUN .\update_path.cmd;
+
+# gcloud requires python on path, update_path.cmd adds python to path. This created a .install\.backup folder that's required for rollbacks and takes ~1Gig. 
+RUN gcloud components install gke-gcloud-auth-plugin --quiet; `
+    Remove-Item -Path C:\google-cloud-sdk\.install\.backup -Force -Recurse
