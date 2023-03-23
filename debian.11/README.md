@@ -1,4 +1,4 @@
-# Ubuntu WorkerTools
+# Debian WorkerTools
 
 > Please note that we update this document periodically to match the latest version on DockerHub which is publicly available.
 > This does not necessarily match the content of Dockerfiles in this repository, as they may contain changes that are not released yet.
@@ -8,40 +8,32 @@
 
 ## Tags
 
-- `4.0.0-ubuntu.18.04`
-- `4.0-ubuntu.18.04`
-- `4-ubuntu.18.04`
-- `ubuntu.18.04`
+- `11.6-slim`
+- `bullseye-20230227-slim`
+- `bullseye-slim`
+- `11-slim`
 
 ## Digest
-`sha256:5f436f9068be4033309636340b6c9d45998617d89ff47eef00b20b0731645d9b`
+`sha256:403e06393d6b9dcb506eeef2adba9e30a97139c54e4c90d55254049f7d224081`
 
 ## Base Image
-`ubuntu:18.04`
+`debian:11-slim`
 
 ## Installed Software
-* Aws CLI 2.0.60
-* Aws Iam Authenticator 0.5.3
-* Aws Powershell 4.1.2
-* Azure CLI 2.14.0\*
-* Azure Powershell 4.5.0
+* Azure CLI 2.46.0\*
+* Azure Powershell 9.3.0
 * Dotnet Sdk 6.0
-* Ecs CLI 1.20.0
-* Eks CTL 0.25.0
-* Google Cloud CLI 339.0.0-0
-* Helm v3.10.2
+* Helm v3.11.2
 * Java Jdk 11.0.13+8-0ubuntu1~18.04
 * Kubectl 1.25.4-00
-* Octopus CLI 9.0.0
-* Octopus Client 14.2.303
-* Powershell 7.0.6\*
-* Terraform 1.3.4
+* Octopus CLI 9.1.7
+* Octopus Client 14.3.516
+* Powershell 7.3.3-1.deb
+* Terraform 1.4.2
 * Umoci 0.4.7
 * wget - Latest
 * unzip - Latest
-* apt-utils - Latest
 * curl - Latest
-* software-properties-common - Latest
 * maven - Latest
 * gradle - Latest
 * Node 14 - Latest

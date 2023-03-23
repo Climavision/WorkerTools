@@ -8,7 +8,7 @@ Write-Host 'Running tests with Pester v'+$($pesterModules[0].Version)
 
 Describe  'installed dependencies' {
     It 'has Octopus.Client installed ' {
-        $expectedVersion = "11.6.3644"
+        $expectedVersion = "14.3.516"
         [Reflection.AssemblyName]::GetAssemblyName("/Octopus.Client.dll").Version.ToString() | Should -match "$expectedVersion.0"
     }
 
@@ -22,22 +22,14 @@ Describe  'installed dependencies' {
         $LASTEXITCODE | Should -be 0
     }
 
-    It 'has aws powershell module installed' {
-        (Get-Module AWSPowerShell.NetCore -ListAvailable).Version.ToString() | should -be '4.1.2.0'
-    }
-
     It 'has az installed' {
       $output = (& az version) | convertfrom-json
-      $output.'azure-cli' | Should -be '2.14.0'
+      $output.'azure-cli' | Should -be '2.46.0'
       $LASTEXITCODE | Should -be 0
     }
 
     It 'has az powershell module installed' {
-        (Get-Module Az -ListAvailable).Version.ToString() | should -be '4.5.0'
-    }
-
-    It 'has aws cli installed' {
-      aws --version 2>&1 | Should -match '2.0.60'
+        (Get-Module Az -ListAvailable).Version.ToString() | should -be '9.3.0'
     }
 
     It 'has node installed' {
@@ -46,18 +38,18 @@ Describe  'installed dependencies' {
     }
 
     It 'has kubectl installed' {
-        kubectl version --client | Should -match '1.18.8'
+        kubectl version --client | Should -match '1.25.4'
         $LASTEXITCODE | Should -be 0
     }
 
     It 'has helm installed' {
-        helm version | Should -match '3.7.1'
+        helm version | Should -match '3.11.2'
         $LASTEXITCODE | Should -be 0
     }
 
     # If the terraform version is not the latest, then `terraform version` returns multiple lines and a non-zero return code
     It 'has terraform installed' {
-        terraform version | Select-Object -First 1 | Should -match '1.1.3'
+        terraform version | Select-Object -First 1 | Should -match '1.4.2'
     }
 
     It 'has python3 installed' {
@@ -65,29 +57,8 @@ Describe  'installed dependencies' {
         $LASTEXITCODE | Should -be 0
     }
 
-    It 'has python2 installed' {
-        # python 2 prints it's version to stderr, for some reason
-        python --version 2>&1 | Should -match 'Python 2.7.17'
-        $LASTEXITCODE | Should -be 0
-    }
-
-    It 'has gcloud installed' {
-        gcloud --version | Select -First 1 | Should -be 'Google Cloud SDK 339.0.0'
-        $LASTEXITCODE | Should -be 0
-    }
-
     It 'has octo installed' {
-        octo --version | Should -match '7.4.1'
-        $LASTEXITCODE | Should -be 0
-    }
-
-    It 'has eksctl installed' {
-        eksctl version | Should -match '0.25.0'
-        $LASTEXITCODE | Should -be 0
-    }
-
-    It 'has ecs-cli installed' {
-        ecs-cli --version | Should -match '1.20.0'
+        octo --version | Should -match '9.1.7'
         $LASTEXITCODE | Should -be 0
     }
 
@@ -101,26 +72,6 @@ Describe  'installed dependencies' {
         $LASTEXITCODE | Should -be 0
     }
 
-    It 'has aws-iam-authenticator installed' {
-        aws-iam-authenticator version | out-null
-        $LASTEXITCODE | Should -be 0
-    }
-
-    It 'has istioctl installed' {
-        istioctl version | out-null
-        $LASTEXITCODE | Should -be 0
-    }
-
-    It 'has linkerd installed' {
-        linkerd version --client | out-null
-        $LASTEXITCODE | Should -be 0
-    }
-
-    It 'has skopeo installed' {
-        skopeo --version | out-null
-        $LASTEXITCODE | Should -be 0
-    }
-
     It 'has umoci installed' {
         umoci --version | out-null
         $LASTEXITCODE | Should -be 0
@@ -129,6 +80,6 @@ Describe  'installed dependencies' {
     It 'should have installed powershell core' {
         $output = & pwsh --version
         $LASTEXITCODE | Should -be 0
-        $output | Should -match '^PowerShell 7\.0\.6*'
+        $output | Should -match '^PowerShell 7\.3\.3*'
     }
 }
